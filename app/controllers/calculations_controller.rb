@@ -10,14 +10,17 @@ class CalculationsController < ApplicationController
     # The special word the user input is in the string @special_word.
     # ================================================================================
 
+    @text_without_spaces = @text.delete(" ")
 
-    @character_count_with_spaces = "Replace this string with your answer."
+    @text_split = @text.split(" ")
 
-    @character_count_without_spaces = "Replace this string with your answer."
+    @character_count_with_spaces = @text.length
 
-    @word_count = "Replace this string with your answer."
+    @character_count_without_spaces = @text_without_spaces.length
 
-    @occurrences = "Replace this string with your answer."
+    @word_count = @text_split.count
+
+    @occurrences = @text_split.count(@special_word)
 
     # ================================================================================
     # Your code goes above.
