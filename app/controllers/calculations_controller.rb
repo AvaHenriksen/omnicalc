@@ -96,28 +96,38 @@ class CalculationsController < ApplicationController
     # Your code goes below.
     # The numbers the user input are in the array @numbers.
     # ================================================================================
+    a = [@numbers]
 
-    @sorted_numbers = "Replace this string with your answer."
+    @sorted_numbers = @numbers.sort
 
-    @count = "Replace this string with your answer."
+    @count = @numbers.count
 
-    @minimum = "Replace this string with your answer."
+    @minimum = @numbers.min
 
-    @maximum = "Replace this string with your answer."
+    @maximum = @numbers.max
 
-    @range = "Replace this string with your answer."
+    @range = @numbers.max-@numbers.min
 
-    @median = "Replace this string with your answer."
+      @sorted = @numbers.sort
+      @len = @sorted.length
 
-    @sum = "Replace this string with your answer."
+    @median = (@sorted[(@len - 1) / 2] + @sorted[@len / 2]) / 2.0
 
-    @mean = "Replace this string with your answer."
+    @sum = @numbers.sum
 
-    @variance = "Replace this string with your answer."
+    @mean = @sum/@count
 
-    @standard_deviation = "Replace this string with your answer."
+      def population_variance
+            m = @mean
+            sum = @numbers.inject(0){|accum, i| accum +(i-m)**2 }
+            sum/(@numbers.length).to_f
+          end
 
-    @mode = "Replace this string with your answer."
+    @variance = population_variance
+
+    @standard_deviation = Math.sqrt(@variance)
+
+    @mode = 
 
     # ================================================================================
     # Your code goes above.
