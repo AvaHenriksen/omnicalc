@@ -12,11 +12,13 @@ class CalculationsController < ApplicationController
 
     @text_without_spaces = @text.delete(" ")
 
+    @text_without_newlines = @text_without_spaces.delete("\r\n")
+
     @text_split = @text.split(" ")
 
     @character_count_with_spaces = @text.length
 
-    @character_count_without_spaces = @text_without_spaces.length
+    @character_count_without_spaces = @text_without_newlines.length
 
     @word_count = @text_split.count
 
@@ -127,7 +129,7 @@ class CalculationsController < ApplicationController
 
     @standard_deviation = Math.sqrt(@variance)
 
-    @mode = 
+    @mode =
 
     # ================================================================================
     # Your code goes above.
